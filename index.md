@@ -2,6 +2,6 @@
 
 Quelques fonctions utiles pour R et Mathematica
 
-https://whereislucas.github.io/stats/mathematica
+[Mathematica](https://whereislucas.github.io/stats/mathematica)
 
-https://whereislucas.github.io/stats/R
+[R](https://whereislucas.github.io/stats/R)
