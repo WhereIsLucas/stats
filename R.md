@@ -1,22 +1,25 @@
 # Fonctions de base pour R
 
-* `mean(x)` moyenne
-* `sd(x)` écart type
-* `var(x)` variance 
-* `quantile(x)`
+* `x<-c(données)` pour encoder des données dans x
+* `table(x)` modalités et effectifs
+* `mean(x)` moyenne de x
+* `sd(x)` écart type de x
+* `var(x)` variance  de x
+* `quantile(x)` donne les quantiles de x
 * `IQR(x)` écart interquartile
-* `table(x)` effectifs
-* `prop.table(eff)` frequences
-* `cumsum(eff)` eff cumulés
-* `cumsum(freq)` freq cumulés
-* `boxplot(x)`
+* `prop.table(table(x))` frequences
+* `cumsum(table(x))` eff cumulés
+* `cumsum(prop.table(table(x)))` freq cumulés
 * `cov(x,y)`
 * `cor(x,y)`
 * `lm(y ~ x)` // regr lin
 
 # Graphes
 
-* `plot(c(min(x)*.99,unique(sort(x)),max(x)*1.01),c(0,cumsum(prop.table(table(x))),1), xlab="", ylab="Frequences cumulees", main="Répartition empirique", type="s")`
-* `plot(c(min(x)*.99,unique(sort(x)),max(x)*1.01),c(0,cumsum(prop.table(table(x))),1), xlab="", ylab="Frequences cumulees", main="Ogive", type="l")`
-* `hist(x,breaks=seq(1.5,8.5,by=1), freq=FALSE)`
-* `plot(ecdf(x), xlab="Température", ylab="Freq")`
+* `plot(c(min(x)*.99,unique(sort(x)),max(x)*1.01),c(0,cumsum(prop.table(table(x))),1), xlab="", ylab="Frequences cumulees", main="Répartition empirique", type="s")` fonction de répartition empirique
+* `plot(c(min(x)*.99,unique(sort(x)),max(x)*1.01),c(0,cumsum(prop.table(table(x))),1), xlab="", ylab="Frequences cumulees", main="Ogive", type="l")` ogive
+* `hist(x,freq=FALSE)` diagramme en baton
+* `plot(ecdf(x))` fonction de répartition
+* `boxplot(x)` boite à moustache
+* `plot(x,y)` scatter plot
+
