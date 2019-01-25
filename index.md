@@ -38,3 +38,14 @@ la fonction de répartition est l'intégrale de - inf à t de la fonction f(x) -
 Pour calculer les marginales, il suffit de sommer les différentes probas
 Pour calculer les E[Y | X = x], reprendre dans le grand tableau
 
+distribution marginale de la distribution jointe : 
+
+<img src="https://latex.codecogs.com/gif.latex?f^X&space;(x&space;=&space;)\int_{-\infty}^{\infty}&space;f(x,y)&space;dx" title="f^X (x = )\int_{-\infty}^{\infty} f(x,y) dx" /> 
+
+distribution conditionnelle
+
+<img src="https://latex.codecogs.com/gif.latex?f^{Y|X=x}&space;(y)=&space;\frac{f(x,y)}{f^X(x)}" title="f^{Y|X=x} (y)= \frac{f(x,y)}{f^X(x)}" /> 
+
+
+
+
