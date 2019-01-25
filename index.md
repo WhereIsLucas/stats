@@ -46,6 +46,9 @@ distribution conditionnelle
 
 <img src="https://latex.codecogs.com/gif.latex?f^{Y|X=x}&space;(y)=&space;\frac{f(x,y)}{f^X(x)}" title="f^{Y|X=x} (y)= \frac{f(x,y)}{f^X(x)}" /> 
 
+Probabilité conditionnelle 
+
+<img src="https://latex.codecogs.com/gif.latex?P(a<=Y<=b|X=x)=\int_a^b&space;f^{Y|[X=x]}(y)dy" title="P(a<=Y<=b|X=x)=\int_a^b f^{Y|[X=x]}(y)dy" />
 
 
 
