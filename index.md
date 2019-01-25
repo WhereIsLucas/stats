@@ -50,5 +50,7 @@ Probabilité conditionnelle
 
 <img src="https://latex.codecogs.com/gif.latex?P(a<=Y<=b|X=x)=\int_a^b&space;f^{Y|[X=x]}(y)dy" title="P(a<=Y<=b|X=x)=\int_a^b f^{Y|[X=x]}(y)dy" />
 
+X et Y sont indépendantes si f (x, y) = fX (x)* fY (y)
+
 
 
