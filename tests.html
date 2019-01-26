@@ -1,0 +1,158 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+
+    <title>Inférences Stat</title>
+</head>
+<body>
+<div class="container">
+    <div class="text-center">
+        <h1>Quel test choisir?</h1>
+        <h3>Inférence sur une: </h3>
+    </div>
+    <div class="row text-center py-">
+        <div class="col-md">
+            <button class="btn btn-primary" onclick="moyenne(this)">Moyenne</button>
+        </div>
+        <div class="col-md">
+            <button class="btn btn-primary"  onclick="variance(this)">Variance</button>
+        </div>
+        <div class="col-md">
+            <button class="btn btn-primary" onclick="proportion(this)">Proportion</button>
+        </div>
+    </div>
+    <!--MOYENNE-->
+    <div id="moyenne" class="text-center">
+        <h3>Nombre d'échantillons?</h3>
+        <div class="row text-center">
+            <div class="col-md">
+                <button class="btn btn-primary" type="button" data-toggle="collapse" onclick="unEchantillon('moyenne')"  aria-expanded="false" aria-controls="collapseExample">Un échantillon</button>
+            </div>
+            <div class="col-md">
+                <button class="btn btn-primary" type="button" data-toggle="collapse" onclick="deuxEchantillon('moyenne')" aria-expanded="false" aria-controls="collapseExample">Deux échantillons</button>
+            </div>
+        </div>
+        <div class="unEchantillon moyenne">
+            <div class="row py-3">
+                <div class="col">
+                    <p>Problème 1</p>
+                    $$
+                    H_0 : \mu <= \mu_o \\
+                    H_0 : \mu > \mu_o
+                    $$
+                </div>
+                <div class="col">
+                    <p>Problème 2</p>
+                    $$
+                    H_0 : \mu >= \mu_o \\
+                    H_0 : \mu < \mu_o
+                    $$
+                </div>
+                <div class="col">
+                    <p>Problème 3</p>
+                    $$
+                    H_0 : \mu = \mu_o \\
+                    H_0 : \mu != \mu_o
+                    $$
+                </div>
+            </div>
+        </div>
+        <div class="deuxEchantillon moyenne">
+
+        </div>
+    </div>
+
+    <!--VARIANCE-->
+    <div id="variance">
+        <div class="row text-center">
+            <div class="col-md">
+                <button class="btn btn-primary" type="button" data-toggle="collapse" onclick="unEchantillon('moyenne')"  aria-expanded="false" aria-controls="collapseExample">Un échantillon</button>
+            </div>
+            <div class="col-md">
+                <button class="btn btn-primary" type="button" data-toggle="collapse" onclick="deuxEchantillon('moyenne')" aria-expanded="false" aria-controls="collapseExample">Deux échantillons</button>
+            </div>
+        </div>
+        <div class="unEchantillon ">
+
+        </div>
+        <div class="deuxEchantillon">
+
+        </div>
+    </div>
+
+    <!--Proportion-->
+    <div id="proportion">
+        <div class="row">
+            <div class="col-md">
+                <button class="btn btn-primary" type="button" data-toggle="collapse" onclick="unEchantillon("proportion")"  aria-expanded="false" aria-controls="collapseExample">Moyenne</button>
+            </div>
+            <div class="col-md">
+                <button class="btn btn-primary" type="button" data-toggle="collapse" onclick="deuxEchantillon("proportion")" aria-expanded="false" aria-controls="collapseExample">Variance</button>
+            </div>
+        </div>
+        <div class="unEchantillon proportion">
+
+        </div>
+        <div class="deuxEchantillon proportion">
+
+        </div>
+    </div>
+
+</div>
+<!-- Optional JavaScript -->
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+
+<script type="text/javascript" async
+        src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    jax: ["input/TeX","output/HTML-CSS"],
+    extensions: ["tex2jax.js","mml2jax.js","asciimath2jax.js","MathMenu.js","MathZoom.js"],
+    TeX: {
+      extensions: ["AMSmath.js","AMSsymbols.js"],
+      equationNumbers: {
+         autoNumber: "AMS",
+    }
+  }
+  });
+</script>
+<script>
+ function moyenne(){
+     $(this).addClass('disabled');
+     $('#moyenne').show();
+     $('#variance').hide();
+     $('#proportion').hide()
+ }
+ function variance(){
+     $('#moyenne').hide();
+     $('#variance').show();
+     $('#proportion').hide()
+ }
+ function proportion(){
+     $('#moyenne').hide();
+     $('#variance').hide();
+     $('#proportion').show()
+ }
+
+ function unEchantillon(type){
+     $('.unEchantillon.'+type).show();
+     $('.deuxEchantillon.'+type).hide();
+ }
+ function deuxEchantillon(type){
+     $('.unEchantillon.'+type).hide();
+     $('.deuxEchantillon.'+type).show()
+ }
+
+</script>
+</body>
+</html>
