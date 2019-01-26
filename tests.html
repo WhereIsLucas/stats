@@ -11,98 +11,522 @@
     <title>Inférences Stat</title>
 </head>
 <body>
-<div class="container">
-    <div class="text-center">
+<a href="https://whereislucas.github.io/stats/" class="pt-2">Retour à l'accueil</a>
+<div class="container py-5">
+    <div class="text-center pt-4">
         <h1>Quel test choisir?</h1>
         <h3>Inférence sur une: </h3>
     </div>
-    <div class="row text-center py-">
+    <div class="row text-center py-3">
         <div class="col-md">
-            <button class="btn btn-primary" onclick="moyenne(this)">Moyenne</button>
+            <button class="btn btn-primary first-btn" onclick="moyenne(this)">Moyenne</button>
         </div>
         <div class="col-md">
-            <button class="btn btn-primary"  onclick="variance(this)">Variance</button>
+            <button class="btn btn-primary first-btn" onclick="variance(this)">Variance</button>
         </div>
         <div class="col-md">
-            <button class="btn btn-primary" onclick="proportion(this)">Proportion</button>
+            <button class="btn btn-primary first-btn" onclick="proportion(this)">Proportion</button>
         </div>
     </div>
+    <div class="py-3 text-center" style="display: none" id="sec-title">
+        <h3 class="mb-0">Nombre d'échantillons?</h3>
+    </div>
     <!--MOYENNE-->
-    <div id="moyenne" class="text-center">
-        <h3>Nombre d'échantillons?</h3>
-        <div class="row text-center">
+    <div id="moyenne" class="text-center" style="display: none">
+        <div class="row text-center pb-3">
             <div class="col-md">
-                <button class="btn btn-primary" type="button" data-toggle="collapse" onclick="unEchantillon('moyenne')"  aria-expanded="false" aria-controls="collapseExample">Un échantillon</button>
+                <button class="btn btn-primary sec-btn" type="button" data-toggle="collapse" onclick="unEchantillon(this,'moyenne')"  aria-expanded="false" aria-controls="collapseExample">Un échantillon</button>
             </div>
             <div class="col-md">
-                <button class="btn btn-primary" type="button" data-toggle="collapse" onclick="deuxEchantillon('moyenne')" aria-expanded="false" aria-controls="collapseExample">Deux échantillons</button>
+                <button class="btn btn-primary sec-btn" type="button" data-toggle="collapse" onclick="deuxEchantillon(this,'moyenne')" aria-expanded="false" aria-controls="collapseExample">Deux échantillons</button>
             </div>
         </div>
-        <div class="unEchantillon moyenne">
-            <div class="row py-3">
-                <div class="col">
-                    <p>Problème 1</p>
-                    $$
-                    H_0 : \mu <= \mu_o \\
-                    H_0 : \mu > \mu_o
-                    $$
-                </div>
-                <div class="col">
-                    <p>Problème 2</p>
-                    $$
-                    H_0 : \mu >= \mu_o \\
-                    H_0 : \mu < \mu_o
-                    $$
-                </div>
-                <div class="col">
-                    <p>Problème 3</p>
-                    $$
-                    H_0 : \mu = \mu_o \\
-                    H_0 : \mu != \mu_o
-                    $$
+        <!-- Un échantillon -->
+        <div class="unEchantillon moyenne" style="display: none">
+            <div class="card shadow-sm">
+                <div class="card-body">
+
+                    <div class="row py-3">
+
+                        <div class="col">
+                            <h4>Problème 1</h4>
+                            $$
+                            H_0 : \mu <= \mu_o \\
+                            H_0 : \mu > \mu_o
+                            $$
+                        </div>
+                        <div class="col">
+                            <h4>Problème 2</h4>
+                            $$
+                            H_0 : \mu >= \mu_o \\
+                            H_0 : \mu < \mu_o
+                            $$
+                        </div>
+                        <div class="col" >
+                            <h4>Problème 3</h4>
+                            $$
+                            H_0 : \mu = \mu_o \\
+                            H_0 : \mu \neq \mu_o
+                            $$
+                        </div>
+                    </div>
+                    <div class="accordion" id="accordionExample1echMoyenne">
+                        <div class="card">
+                            <div class="card-header" id="headingOne1echMoyenne">
+                                <h2 class="mb-0">
+                                    <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne1echMoyenne" aria-expanded="true" aria-controls="collapseOne1echMoyenne">
+                                        Situation 1: $ X_1, . . . , X_n i.i.d. \mathcal{N} (\mu, \sigma^2_0)$ avec $ \sigma_0^2$ connu
+                                    </button>
+                                </h2>
+                            </div>
+
+                            <div id="collapseOne1echMoyenne" class="collapse" aria-labelledby="headingOne1echMoyenne" data-parent="#accordionExample1echMoyenne">
+                                <div class="card-body">
+                                    <div class="col row">
+                                        <div class="col">
+                                            <h4>Statistique de test</h4>
+                                            $$
+                                            T = \frac{\bar{X}-\mu_0}{\sigma_0 / \sqrt{n}}
+                                            $$
+                                            <h4>Loi utilisée</h4>
+                                            $$ \mathcal{N}(0,1) $$
+                                            <code>NormalDistribution[0,1]</code>
+                                        </div>
+                                        <div class="col">
+                                            <h4>Règle de comportement</h4>
+                                            <p>Rejet $H_0$ ssi $T > z_\alpha$ <br><code>Quantile[NormalDistribution[0,1],1-a]</code></p>
+                                            <p>Rejet $H_0$ ssi $T < -z_\alpha$ <br><code>Quantile[NormalDistribution[0,1],a]</code></p>
+                                            <p>Rejet $H_0$ ssi $|T| > z_{\alpha/2}$<br> <code>Quantile[NormalDistribution[0,1],1-a/2]</code></p>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card">
+                            <div class="card-header" id="headingTwo1echMoyenne">
+                                <h2 class="mb-0">
+                                    <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo1echMoyenne" aria-expanded="false" aria-controls="collapseTwo1echMoyenne">
+                                        Situation 2: $ X_1, . . . , X_n i.i.d. \mathcal{N} (\mu, \sigma^2)$ avec $ \sigma^2$ inconnu
+                                    </button>
+                                </h2>
+                            </div>
+                            <div id="collapseTwo1echMoyenne" class="collapse" aria-labelledby="headingTwo1echMoyenne" data-parent="#accordionExample1echMoyenne">
+                                <div class="card-body">
+                                    <div class="col row">
+                                        <div class="col">
+                                            <h4>Statistique de test</h4>
+                                            $$
+                                            T = \frac{\bar{X}-\mu_0}{s / \sqrt{n-1}}
+                                            $$
+                                            <h4>Loi utilisée</h4>
+                                            $$ \mathcal{T}(n-1) $$
+                                            <code>StudentTDistribution[n-1]</code>
+                                        </div>
+                                        <div class="col">
+                                            <h4>Règle de comportement</h4>
+                                            <p>Rejet $H_0$ ssi $T > z_\alpha$ <br><code>Quantile[StudentTDistribution[n-1],1-a]</code></p>
+                                            <p>Rejet $H_0$ ssi $T < -z_\alpha$ <br><code>Quantile[StudentTDistribution[n-1],a]</code></p>
+                                            <p>Rejet $H_0$ ssi $|T| > z_{\alpha/2}$<br> <code>Quantile[StudentTDistribution[n-1],1-a/2]</code></p>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card">
+                            <div class="card-header" id="headingThree1echMoyenne">
+                                <h2 class="mb-0">
+                                    <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseThree1echMoyenne" aria-expanded="false" aria-controls="collapseThree1echMoyenne">
+                                        Situation 3: $ X_1, . . . , X_n i.i.d. \mathcal{N} (\mu, \sigma^2)$ de moyenne et variance inconnue, n grand
+                                    </button>
+                                </h2>
+                            </div>
+                            <div id="collapseThree1echMoyenne" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample1echMoyenne">
+                                <div class="card-body">
+                                    <div class="col row">
+                                        <div class="col">
+                                            <h4>Statistique de test</h4>
+                                            $$
+                                            T = \frac{\bar{X}-\mu_0}{s / \sqrt{n-1}}
+                                            $$
+                                            <h4>Loi utilisée</h4>
+                                            $$ \mathcal{N}(0,1) $$
+                                            <code>NormalDistribution[0,1]</code>
+                                        </div>
+                                        <div class="col">
+                                            <h4>Règle de comportement</h4>
+                                            <p>Rejet $H_0$ ssi $T > z_\alpha$ <br><code>Quantile[NormalDistribution[0,1],1-a]</code></p>
+                                            <p>Rejet $H_0$ ssi $T < -z_\alpha$ <br><code>Quantile[NormalDistribution[0,1],a]</code></p>
+                                            <p>Rejet $H_0$ ssi $|T| > z_{\alpha/2}$<br> <code>Quantile[NormalDistribution[0,1],1-a/2]</code></p>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
-        <div class="deuxEchantillon moyenne">
+        <div class="deuxEchantillon moyenne" style="display: none">
+            <div class="card shadow-sm">
+                <div class="card-body">
+
+                    <div class="row py-3">
+
+                        <div class="col">
+                            <h4>Problème 1</h4>
+                            $$
+                            H_0 : \mu_1 - \mu_2 \leq c \\
+                            H_1 : \mu_1 - \mu_2 > c
+                            $$
+                        </div>
+                        <div class="col">
+                            <h4>Problème 2</h4>
+                            $$
+                            H_0 : \mu_1 - \mu_2 \geq c \\
+                            H_1 : \mu_1 - \mu_2 < c
+                            $$
+                        </div>
+                        <div class="col" >
+                            <h4>Problème 3</h4>
+                            $$
+                            H_0 : \mu_1 - \mu_2 = c \\
+                            H_1 : \mu_1 - \mu_2 \neq c
+                            $$
+                        </div>
+                    </div>
+                    <div class="accordion" id="accordionExample2echMoyenne">
+                        <div class="card">
+                            <div class="card-header" id="headingOne2echMoyenne">
+                                <h2 class="mb-0">
+                                    <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne2echMoyenne" aria-expanded="true" aria-controls="collapseOne2echMoyenne">
+                                        Situation 1: $ X_1, . . . , X_{n_1} i.i.d. \mathcal{N} (\mu_1, \sigma^2_1) $ avec $ \sigma_1^2$ connu et $ Y_1, . . . , Y_{n_2} i.i.d. \mathcal{N} (\mu_2, \sigma^2_2)$ avec $ \sigma_2^2 $ connu
+                                    </button>
+                                </h2>
+                            </div>
+
+                            <div id="collapseOne2echMoyenne" class="collapse" aria-labelledby="headingOne2echMoyenne" data-parent="#accordionExample2echMoyenne">
+                                <div class="card-body">
+                                    <div class="col row">
+                                        <div class="col">
+                                            <h4>Statistique de test</h4>
+                                            $$
+                                            T = \frac{\bar{X} - \bar{Y} - c}{\sqrt{\frac{\sigma_1^2}{n_1} + \frac{\sigma_2^2}{n_2}}
+                                            $$
+                                            <h4>Loi utilisée</h4>
+                                            $$ \mathcal{N}(0,1) $$
+                                            <code>NormalDistribution[0,1]</code>
+                                        </div>
+                                        <div class="col">
+                                            <h4>Règle de comportement</h4>
+                                            <p>Rejet $H_0$ ssi $T > z_\alpha$ <br><code>Quantile[NormalDistribution[0,1],1-a]</code></p>
+                                            <p>Rejet $H_0$ ssi $T < -z_\alpha$ <br><code>Quantile[NormalDistribution[0,1],a]</code></p>
+                                            <p>Rejet $H_0$ ssi $|T| > z_{\alpha/2}$<br> <code>Quantile[NormalDistribution[0,1],1-a/2]</code></p>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card">
+                            <div class="card-header" id="headingTwo2echMoyenne">
+                                <h2 class="mb-0">
+                                    <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo2echMoyenne" aria-expanded="false" aria-controls="collapseTwo2echMoyenne">
+                                        Situation 2: $ X_1, . . . , X_{n_1} i.i.d. \mathcal{N} (\mu_1, \sigma^2_1) $ avec $ \sigma_1^2$ inconnu et $ Y_1, . . . , Y_{n_2} i.i.d. \mathcal{N} (\mu_2, \sigma^2_2)$ avec $ \sigma_2^2 $ inconnu
+                                    </button>
+                                </h2>
+                            </div>
+                            <div id="collapseTwo2echMoyenne" class="collapse" aria-labelledby="headingTwo2echMoyenne" data-parent="#accordionExample2echMoyenne">
+                                <div class="card-body">
+                                    <div class="col row">
+                                        <div class="col">
+                                            <h3>Si les variances sont supposées égales.</h3>
+
+                                            <h4>Statistique de test</h4>
+                                            $$
+                                            T = \frac{\bar{X}-\bar{Y}-c}{\sqrt{\frac{n_1s_1^2 + n_2s_2^2}{n_1+n_2 -2}\frac{n_1 + n_2}{n_1n_2}}}
+                                            $$
+                                            <h4>Loi utilisée</h4>
+                                            $$ \mathcal{T}(\nu) $$ avec $ \nu = n_1+n_2-2 $
+                                            <br>
+                                            <code>StudentTDistribution[nu]</code>
+                                        </div>
+                                        <div class="col">
+                                            <h3>Si les variances ne sont pas supposées égales.</h3>
+
+                                            <h4>Statistique de test</h4>
+                                            $$
+                                            T = \frac{\bar{X}-\bar{Y}-c}{\sqrt{\frac{s_1^2}{n_1} + \frac{s_2^2}{n_2}}}
+                                            $$
+                                            <h4>Loi utilisée</h4>
+                                            $$ \mathcal{T}(\nu) $$ avec $\nu = \frac{\left(\frac{s_1^2}{n_1} + \frac{s_2^2}{n_2}\right)^2}{\frac{(s_1^2/n_1)^2}{n_1-1}+\frac{(s_2^2/n_2)^2}{n_2-1}} $
+                                            <br>
+                                            <code>StudentTDistribution[nu]</code>
+                                        </div>
+                                        <div class="col-12"></div>
+                                        <div class="col">
+                                            <h4>Règle de comportement</h4>
+                                            <p>Rejet $H_0$ ssi $T > t_{\nu,\alpha} $ <br><code>Quantile[StudentTDistribution[nu],1-a]</code></p>
+                                            <p>Rejet $H_0$ ssi $T < - t_{\nu,\alpha} $<br><code>Quantile[StudentTDistribution[nu],a]</code></p>
+                                            <p>Rejet $H_0$ ssi $|T| > t_{\nu,\alpha/2}$<br> <code>Quantile[StudentTDistribution[nu],1-a/2]</code></p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card">
+                            <div class="card-header" id="headingThree2echMoyenne">
+                                <h2 class="mb-0">
+                                    <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseThree2echMoyenne" aria-expanded="false" aria-controls="collapseThree2echMoyenne">
+                                        Situation 3: $ X_1, . . . , X_{n_1} i.i.d. \mathcal{N} (\mu_1, \sigma^2_1) $ avec $ \sigma_1^2$ et $\mu_1$ inconnus et $ Y_1, . . . , Y_{n_2} i.i.d. \mathcal{N} (\mu_2, \sigma^2_2)$ avec $ \sigma_2^2 $ et $\mu_2$ inconnus
+                                    </button>
+                                </h2>
+                            </div>
+                            <div id="collapseThree2echMoyenne" class="collapse" aria-labelledby="headingThree2echMoyenne" data-parent="#accordionExample2echMoyenne">
+                                <div class="card-body">
+                                    <div class="col row">
+                                        <div class="col">
+                                            <h4>Statistique de test</h4>
+                                            $$
+                                            T = \frac{\bar{X} - \bar{Y}-c}{\sqrt{\frac{s_1^2}{n_1-1}+\frac{s_2^2}{n_2-1}}}
+                                            $$
+                                            <h4>Loi utilisée</h4>
+                                            $$ \mathcal{N}(0,1) $$
+                                            <code>NormalDistribution[0,1]</code>
+                                        </div>
+                                        <div class="col">
+                                            <h4>Règle de comportement</h4>
+                                            <p>Rejet $H_0$ ssi $T > z_\alpha$ <br><code>Quantile[NormalDistribution[0,1],1-a]</code></p>
+                                            <p>Rejet $H_0$ ssi $T < -z_\alpha$ <br><code>Quantile[NormalDistribution[0,1],a]</code></p>
+                                            <p>Rejet $H_0$ ssi $|T| > z_{\alpha/2}$<br> <code>Quantile[NormalDistribution[0,1],1-a/2]</code></p>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
 
         </div>
     </div>
 
     <!--VARIANCE-->
-    <div id="variance">
-        <div class="row text-center">
+    <div id="variance" class="text-center" style="display: none">
+        <div class="row text-center pb-3">
             <div class="col-md">
-                <button class="btn btn-primary" type="button" data-toggle="collapse" onclick="unEchantillon('moyenne')"  aria-expanded="false" aria-controls="collapseExample">Un échantillon</button>
+                <button class="btn btn-primary sec-btn" type="button" data-toggle="collapse" onclick="unEchantillon(this,'variance')"  aria-expanded="false" aria-controls="collapseExample">Un échantillon</button>
             </div>
             <div class="col-md">
-                <button class="btn btn-primary" type="button" data-toggle="collapse" onclick="deuxEchantillon('moyenne')" aria-expanded="false" aria-controls="collapseExample">Deux échantillons</button>
+                <button class="btn btn-primary sec-btn" type="button" data-toggle="collapse" onclick="deuxEchantillon(this,'variance')" aria-expanded="false" aria-controls="collapseExample">Deux échantillons</button>
             </div>
         </div>
-        <div class="unEchantillon ">
+        <!-- VARIANCE -->
 
-        </div>
-        <div class="deuxEchantillon">
+        <div class="unEchantillon variance" style="display: none">
+            <div class="card shadow-sm">
+                <div class="card-body">
 
+                    <div class="row py-3">
+
+                        <div class="col">
+                            <h4>Problème 1</h4>
+                            $$
+                            H_0 : \sigma^2 \leq \sigma^2_o \\
+                            H_1 : \sigma^2 > \sigma^2_o
+                            $$
+                        </div>
+                        <div class="col">
+                            <h4>Problème 2</h4>
+                            $$
+                            H_0 : \sigma^2 \geq \sigma^2_o \\
+                            H_1 : \sigma^2 < \sigma^2_o
+                            $$
+                        </div>
+                        <div class="col" >
+                            <h4>Problème 3</h4>
+                            $$
+                            H_0 : \sigma^2 = \sigma^2_o \\
+                            H_1 : \sigma^2 \neq \sigma^2_o
+                            $$
+                        </div>
+                    </div>
+                    <div class="accordion" id="accordionExample1echVariance">
+                        <div class="card">
+                            <div class="card-header" id="headingOne1echVariance">
+                                <h2 class="mb-0">
+                                    <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne1echVariance" aria-expanded="true" aria-controls="collapseOne1echVariance">
+                                        Situation 1: $ X_1, . . . , X_n i.i.d. \mathcal{N} (\mu_0, \sigma^2_0)$ avec $ \mu_0^2$ connu
+                                    </button>
+                                </h2>
+                            </div>
+
+                            <div id="collapseOne1echVariance" class="collapse" aria-labelledby="headingOne1echVariance" data-parent="#accordionExample1echVariance">
+                                <div class="card-body">
+                                    <div class="col row">
+                                        <div class="col">
+                                            <h4>Statistique de test</h4>
+                                            $$
+                                            T = \sum_{i=1}^n \left( \frac{X_i - \mu_0}{\sigma_0} \right)
+                                            $$
+                                            <h4>Loi utilisée</h4>
+                                            $$ \mathcal{\chi}^2_n $$
+                                            <code>ChiSquareDistribution[n]</code>
+                                        </div>
+                                        <div class="col">
+                                            <h4>Règle de comportement</h4>
+                                            <p>Rejet $H_0$ ssi $T > \chi^2_{n;1-\alpha} $ <br><code>Quantile[ChiSquareDistribution[n],1-a]</code></p>
+                                            <p>Rejet $H_0$ ssi $T < \chi^2_{n;\alpha} $ <br><code>Quantile[ChiSquareDistribution[n],a]</code></p>
+                                            <p>Rejet $H_0$ ssi $|T| \notin [\chi^2_{n;1-\alpha/2}, \chi^2_{n;\alpha/2}] $<br></p>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card">
+                            <div class="card-header" id="headingTwo1echVariance">
+                                <h2 class="mb-0">
+                                    <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo1echVariance" aria-expanded="false" aria-controls="collapseTwo1echVariance">
+                                        Situation 2: $ X_1, . . . , X_n i.i.d. \mathcal{N} (\mu, \sigma^2)$ avec $ \mu$ inconnu
+                                    </button>
+                                </h2>
+                            </div>
+                            <div id="collapseTwo1echVariance" class="collapse" aria-labelledby="headingTwo1echVariance" data-parent="#accordionExample1echVariance">
+                                <div class="card-body">
+                                    <div class="col row">
+                                        <div class="col">
+                                            <h4>Statistique de test</h4>
+                                            $$
+                                            T = \frac{ns^2}{\sigma_0^2}
+                                            $$
+                                            <h4>Loi utilisée</h4>
+                                            $$ \chi^2_{n-1} $$
+                                            <code>ChiSquareDistribution[n-1]</code>
+                                        </div>
+                                        <div class="col">
+                                            <h4>Règle de comportement</h4>
+                                            <p>Rejet $H_0$ ssi $T > \chi^2_{n-1;1-\alpha} $ <br><code>Quantile[ChiSquareDistribution[n-1],1-a]</code></p>
+                                            <p>Rejet $H_0$ ssi $T < \chi^2_{n-1;\alpha}$ <br><code>Quantile[ChiSquareDistribution[n-1],a]</code></p>
+                                            <p>Rejet $H_0$ ssi $|T|  \notin [\chi^2_{n-1;1-\alpha/2}, \chi^2_{n-1;\alpha/2} ]$<br> <code>Quantile[ChiSquareDistribution[n-1],1-a/2]</code></p>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="deuxEchantillon variance" style="display: none">
+                                <div class="row py-3">
+                                    <div class="col">
+                                        <h4>Problème 1</h4>
+                                        $$
+                                        H_0 : \sigma_1^2/\sigma_2^2 \leq c \\
+                                        H_1 : \sigma_1^2/\sigma_2^2 > c
+                                        $$
+                                    </div>
+                                    <div class="col">
+                                        <h4>Problème 2</h4>
+                                        $$
+                                        H_0 : \sigma_1^2/\sigma_2^ \geq c \\
+                                        H_1 : \sigma_1^2/\sigma_2^ < c
+                                        $$
+                                    </div>
+                                    <div class="col">
+                                        <h4>Problème 3</h4>
+                                        $$
+                                        H_0 : \sigma_1^2/\sigma_2^ = c \\
+                                        H_1 : \sigma_1^2/\sigma_2^ \neq c
+                                        $$
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-12">
+                                        $ X_1, . . . , X_{n_1} i.i.d. \mathcal{N} (\mu_1, \sigma^2_1) $ avec $\mu_1$ inconnu et $ Y_1, . . . , Y_{n_2} i.i.d. \mathcal{N} (\mu_2, \sigma^2_2)$ avec $\mu_2$ connu
+                                    </div>
+                                    <div class="col">
+                                        <h4>Statistique de test</h4>
+                                        $$
+                                        T = \frac{n_1(n_2-1)s_1^2}{n_2(n_1-1)s_2^2 c}
+                                        $$
+                                        <h4>Loi utilisée</h4>
+                                        $$ \mathcal{F}_{n_1-1,n_2-1} $$
+                                        <code>FRatioDistribution[n1-1,n2-1]</code>
+                                    </div>
+                                    <div class="col">
+                                        <h4>Règle de comportement</h4>
+                                        <p>Rejet $H_0$ ssi $T > \mathcal{F}_{n_1-1,n_2-1;1-\alpha}$ <br><code>Quantile[FRatioDistribution[n1-1,n2-1],1-a]</code></p>
+                                        <p>Rejet $H_0$ ssi $T < \mathcal{F}_{n_1-1,n_2-1;\alpha}$ <br><code>Quantile[FRatioDistribution[n1-1,n2-1],a]</code></p>
+                                        <p>Rejet $H_0$ ssi $|T| \notin [ \mathcal{F}_{n_1-1,n_2-1;\alpha/2}, \mathcal{F}_{n_1-1,n_2-1;1-\alpha/2} ]$<br></p>
+                                    </div>
+
+                                </div>
+                            </div>
+
+                        </div>
+
+                    </div>
+                </div>
+            </div>
         </div>
+        <div class="deuxEchantillon variance card shadow-sm" style="display: none">
+            <div class="card-body">
+
+                <div class="row py-3">
+                    <div class="col">
+                        <h4>Problème 1</h4>
+                        $$
+                        H_0 : \sigma_1^2/\sigma_2^2 \leq c \\
+                        H_1 : \sigma_1^2/\sigma_2^2 > c
+                        $$
+                    </div>
+                    <div class="col">
+                        <h4>Problème 2</h4>
+                        $$
+                        H_0 : \sigma_1^2/\sigma_2^ \geq c \\
+                        H_1 : \sigma_1^2/\sigma_2^ < c
+                        $$
+                    </div>
+                    <div class="col">
+                        <h4>Problème 3</h4>
+                        $$
+                        H_0 : \sigma_1^2/\sigma_2^ = c \\
+                        H_1 : \sigma_1^2/\sigma_2^ \neq c
+                        $$
+                    </div>
+                </div>
+                <div class="row">
+
+                    <div class="col-12 py-3">
+                        $ X_1, . . . , X_{n_1} i.i.d. \mathcal{N} (\mu_1, \sigma^2_1) $ avec $\mu_1$ inconnu et $ Y_1, . . . , Y_{n_2} i.i.d. \mathcal{N} (\mu_2, \sigma^2_2)$ avec $\mu_2$ connu
+                    </div>
+                    <div class="col">
+                        <h4>Statistique de test</h4>
+                        $$
+                        T = \frac{n_1(n_2-1)s_1^2}{n_2(n_1-1)s_2^2 c}
+                        $$
+                        <h4>Loi utilisée</h4>
+                        $$ \mathcal{F}_{n_1-1,n_2-1} $$
+                        <code>FRatioDistribution[n1-1,n2-1]</code>
+                    </div>
+                    <div class="col">
+                        <h4>Règle de comportement</h4>
+                        <p>Rejet $H_0$ ssi $T > \mathcal{F}_{n_1-1,n_2-1;1-\alpha}$ <br><code>Quantile[FRatioDistribution[n1-1,n2-1],1-a]</code></p>
+                        <p>Rejet $H_0$ ssi $T < \mathcal{F}_{n_1-1,n_2-1;\alpha}$ <br><code>Quantile[FRatioDistribution[n1-1,n2-1],a]</code></p>
+                        <p>Rejet $H_0$ ssi $|T| \notin [ \mathcal{F}_{n_1-1,n_2-1;\alpha/2}, \mathcal{F}_{n_1-1,n_2-1;1-\alpha/2} ]$<br></p>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+
     </div>
 
     <!--Proportion-->
-    <div id="proportion">
-        <div class="row">
-            <div class="col-md">
-                <button class="btn btn-primary" type="button" data-toggle="collapse" onclick="unEchantillon("proportion")"  aria-expanded="false" aria-controls="collapseExample">Moyenne</button>
-            </div>
-            <div class="col-md">
-                <button class="btn btn-primary" type="button" data-toggle="collapse" onclick="deuxEchantillon("proportion")" aria-expanded="false" aria-controls="collapseExample">Variance</button>
-            </div>
-        </div>
-        <div class="unEchantillon proportion">
-
-        </div>
-        <div class="deuxEchantillon proportion">
-
-        </div>
-    </div>
 
 </div>
 <!-- Optional JavaScript -->
@@ -116,42 +540,71 @@
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
 <script type="text/x-mathjax-config">
   MathJax.Hub.Config({
-    jax: ["input/TeX","output/HTML-CSS"],
-    extensions: ["tex2jax.js","mml2jax.js","asciimath2jax.js","MathMenu.js","MathZoom.js"],
-    TeX: {
-      extensions: ["AMSmath.js","AMSsymbols.js"],
-      equationNumbers: {
-         autoNumber: "AMS",
-    }
-  }
-  });
+  tex2jax: {
+  inlineMath: [['$','$'], ['\\(','\\)']],
+},
+jax: ["input/TeX","output/HTML-CSS"],
+extensions: ["tex2jax.js","mml2jax.js","asciimath2jax.js","MathMenu.js","MathZoom.js"],
+TeX: {
+extensions: ["AMSmath.js","AMSsymbols.js"],
+equationNumbers: {
+autoNumber: "AMS"
+}
+
+}
+});
 </script>
 <script>
- function moyenne(){
-     $(this).addClass('disabled');
-     $('#moyenne').show();
-     $('#variance').hide();
-     $('#proportion').hide()
- }
- function variance(){
-     $('#moyenne').hide();
-     $('#variance').show();
-     $('#proportion').hide()
- }
- function proportion(){
-     $('#moyenne').hide();
-     $('#variance').hide();
-     $('#proportion').show()
- }
+    function common_first_btn() {
+        $('#sec-title').show();
+        $('.unEchantillon').hide();
+        $('.deuxEchantillon').hide();
+        $('.sec-btn').removeClass('disabled');
+        $('.first-btn').removeClass('disabled');
+        $('.first-btn').addClass('disabled');
+    }
 
- function unEchantillon(type){
-     $('.unEchantillon.'+type).show();
-     $('.deuxEchantillon.'+type).hide();
- }
- function deuxEchantillon(type){
-     $('.unEchantillon.'+type).hide();
-     $('.deuxEchantillon.'+type).show()
- }
+    function commom_sec_btn()
+    {
+        $('.sec-btn').removeClass('disabled');
+        $('.sec-btn').addClass('disabled');
+        $('.unEchantillon').hide();
+        $('.deuxEchantillon').hide();
+    }
+
+
+    function moyenne(elem){
+        common_first_btn();
+        $(elem).removeClass('disabled');
+        $('#moyenne').show();
+        $('#variance').hide();
+        $('#proportion').hide()
+    }
+    function variance(elem){
+        common_first_btn();
+        $(elem).removeClass('disabled');
+        $('#moyenne').hide();
+        $('#variance').show();
+        $('#proportion').hide()
+    }
+    function proportion(elem){
+        common_first_btn();
+        $(elem).removeClass('disabled');
+        $('#moyenne').hide();
+        $('#variance').hide();
+        $('#proportion').show()
+    }
+
+    function unEchantillon(elem,type){
+        commom_sec_btn();
+        $(elem).removeClass('disabled');
+        $('.unEchantillon.'+type).show();
+    }
+    function deuxEchantillon(elem,type){
+        commom_sec_btn();
+        $(elem).removeClass('disabled');
+        $('.deuxEchantillon.'+type).show()
+    }
 
 </script>
 </body>
