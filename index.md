@@ -6,6 +6,8 @@
 
 [R](https://whereislucas.github.io/stats/R)
 
+[Tests](https://whereislucas.github.io/stats/tests)
+
 ## Formulaire et autres trucs
 
 P(A ou B) = P(A) + P(B) - P(A et B) 
