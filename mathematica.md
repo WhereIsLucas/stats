@@ -23,4 +23,7 @@ Quartiles `Quartiles[distr]`
 Moyenne `Mean[]`
 
 
+! Mathematica définit sa Distribution normale avec l'écart type, nous avec la variance! 
+
+Pour avoir le symbole de distribution il faut encoder \[Distributed]
 
