@@ -12,6 +12,8 @@ Variance d'une distribution de poisson `Variance[PoissonDistribution[2.5]]`
 
 Ecart-type ´`StandardDeviation[PoissonDistribution[2.5]]`
 
+Espérance`Expectation[x, x \[Distributed] PoissonDistribution[2.5]]`
+
 
 
 
