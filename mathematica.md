@@ -14,6 +14,13 @@ Ecart-type ´`StandardDeviation[PoissonDistribution[2.5]]`
 
 Espérance`Expectation[x, x \[Distributed] PoissonDistribution[2.5]]`
 
+# Statistique descriptive
+
+Ecart inter quartil `InterquartileRange[distr]`
+
+Quartiles `Quartiles[distr]`
+
+Moyenne `Mean[]`
 
 
 
