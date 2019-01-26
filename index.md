@@ -8,6 +8,10 @@
 
 ## Formulaire et autres trucs
 
+P(A ou B) = P(A) + P(B) - P(A et B) 
+
+P(A | B) = P(A et B) / P(B)
+
 ### Stat descriptive
 
 mode = modalité à l'effectif maximum
