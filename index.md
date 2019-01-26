@@ -10,7 +10,7 @@
 
 P(A ou B) = P(A) + P(B) - P(A et B) 
 
-P(A | B) = P(A et B) / P(B)
+<img src="https://latex.codecogs.com/gif.latex?P(A|B)=\frac{P(A\cap&space;B)}{P(B)}" title="P(A|B)=\frac{P(A\cap B)}{P(B)}" />
 
 ### Stat descriptive
 
