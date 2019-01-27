@@ -28,6 +28,8 @@ mode = modalité à l'effectif maximum
 
 ![](http://mathurl.com/y77p524f.png)
 
+Penser à enlever le biais de la variance ![](https://wikimedia.org/api/rest_v1/media/math/render/svg/b22f6167a0c6cce82e72c46a3b20ffc36be007d1)
+
 ### TCL
 
 De plus, lorsque n ≥ 30, np > 5 et n(1 − p) > 5, le théorème central limite permet d’approximer Bin(n; p) par la loi
