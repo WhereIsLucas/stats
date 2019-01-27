@@ -69,5 +69,7 @@ Probabilité conditionnelle
 
 X et Y sont indépendantes si f (x, y) = fX (x)* fY (y)
 
+## Estimateurs
 
 
+L'estimateur du max de vraisemblance est le theta qui annule la dérivée de la log vraisemblance.
