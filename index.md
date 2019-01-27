@@ -55,9 +55,9 @@ Pour calculer les E[Y | X = x], reprendre dans le grand tableau
 
 distribution marginale de la distribution jointe : 
 
-<img src="https://latex.codecogs.com/gif.latex?f^X&space;(x&space;=&space;)\int_{-\infty}^{\infty}&space;f(x,y)&space;dx" title="f^X (x)\int_{-\infty}^{\infty} f(x,y) dy" /> 
+<img src="https://latex.codecogs.com/gif.latex?f^X(x)&space;=&space;\int_{-\infty}^{\infty}&space;f(x,y)&space;dy" title="f^X(x) = \int_{-\infty}^{\infty} f(x,y) dy" />
 
-distribution conditionnelle
+distribution (densité) conditionnelle
 
 <img src="https://latex.codecogs.com/gif.latex?f^{Y|X=x}&space;(y)=&space;\frac{f(x,y)}{f^X(x)}" title="f^{Y|X=x} (y)= \frac{f(x,y)}{f^X(x)}" /> 
 
