@@ -14,9 +14,15 @@ Ecart-type ´`StandardDeviation[PoissonDistribution[2.5]]`
 
 Espérance`Expectation[x, x \[Distributed] PoissonDistribution[2.5]]`
 
-Réorganisons les données afin de pouvoir réaliser la régression linéaire `data = Table[{x[[i]], y[[i]]}, {i, 1, Length[x]}]`
-Régréssion `LinearModelFit[data, t, t]`
+Réorganisons les données afin de pouvoir réaliser la régression linéaire 
 
+`data = Table[{x[[i]], y[[i]]}, {i, 1, Length[x]}]`
+
+Régréssion 
+
+`LM = LinearModelFit[data, t, t]`
+
+`LM[x] ` pour estimer
 # Statistique descriptive
 
 Ecart inter quartil `InterquartileRange[distr]`
