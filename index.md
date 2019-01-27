@@ -65,6 +65,8 @@ Probabilité conditionnelle
 
 <img src="https://latex.codecogs.com/gif.latex?P(a<=Y<=b|X=x)=\int_a^b&space;f^{Y|[X=x]}(y)dy" title="P(a<=Y<=b|X=x)=\int_a^b f^{Y|[X=x]}(y)dy" />
 
+<img src="https://latex.codecogs.com/gif.latex?E[X|Y&space;=&space;y]&space;=&space;\int_{-\infty}^{\infty}&space;x&space;*&space;\frac{f(x,y)}{f^Y(y)}&space;dx&space;=&space;\int_{-\infty}^{\infty}&space;x&space;*&space;f^{X|Y=y}(x)&space;dx" title="E[X|Y = y] = \int_{-\infty}^{\infty} x * \frac{f(x,y)}{f^Y(y)} dx = \int_{-\infty}^{\infty} x * f^{X|Y=y}(x) dx" />
+
 X et Y sont indépendantes si f (x, y) = fX (x)* fY (y)
 
 
