@@ -28,6 +28,13 @@ mode = modalité à l'effectif maximum
 
 ![](http://mathurl.com/y77p524f.png)
 
+### TCL
+
+De plus, lorsque n ≥ 30, np > 5 et n(1 − p) > 5, le théorème central limite permet d’approximer Bin(n; p) par la loi
+N(np; np(1 − p))
+
+En outre, lorsque p est très petit et np ≤ 10, on peut approximer Bin(n; p) par P(np)
+
 ### Fonction de densité et de répartition
 
 l'intégrale de fonction de densité de proba = 1 -> notée f(x)
