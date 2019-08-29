@@ -4,6 +4,8 @@ Coefficient binomial (C_n^m) : `Binomial[n, m]`
 
 Utiliser `Solve` est pratique
 
+
+
 Fonction de porte est la fonction `Boole`
 
 Probabilité x=0, distribution de poisson  `Probability[ x == 0 , x \[Distributed] PoissonDistribution[2.5]]`
@@ -23,6 +25,21 @@ Régréssion
 `LM = LinearModelFit[data, t, t]`
 
 `LM[x] ` pour estimer
+
+En vrac : 
+```
+Probability[]
+PDF[]
+CDF[]
+Mean[]
+Variance[]
+PoissonDistribution[]
+BinomialDistribution[]
+NormalDistribution[]
+ExponentialDistribution[]
+Solve[]
+```
+
 # Statistique descriptive
 
 Ecart inter quartil `InterquartileRange[distr]`
